@@ -1,11 +1,16 @@
 # Football Data Analyzer
-players = [
-    {"name": "Mbappe", "goals": 44, "assists": 10},
-    {"name": "Haaland", "goals": 38, "assists": 6},
-    {"name": "Kvaratskhelia", "goals": 12, "assists": 8}
-]
+import csv
+players = []
+with open("players.csv", "r") as file:
+    reader = csv.DictReader(file)
+    for row in reader:
+        players.append(row)
 print("Player Statistics:")
 for player in players:
-    total = player["goals"] + player["assists"]
-    print(player["name"], "Total Contributions:", total)
+    contribution = int(player["Goals"]) + int(player["Assists"])
+    print(
+        player["Name"],
+        "- Goal Contributions:",
+        contribution
+    )
 
